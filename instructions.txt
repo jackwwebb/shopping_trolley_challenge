@@ -1,0 +1,37 @@
+Shopping trolley coding challenge.
+
+Intro.
+- This isn't to see if you can complete all the tasks, it is to see how you code
+- Use any normal tooling that you would use, so use your normal IDE, and feel free to google things etc
+- Feel free to keep a dialogue during the challenge, collaboration is welcome
+
+Write code in Python that does the following actions to a shopping trolley.
+- Add a product to the trolley
+- Find the total cost of the products in a trolley
+- View all products in a trolley
+- Remove a product from the trolley
+
+The following deals apply.
+- Fruit Tea - buy one get one free
+- Strawberries - 50 pence off each punnet if you buy 3 or more
+
+products = {
+    "FR1": {
+        "Name": "Fruit Tea",
+        "Price": 3.11,
+    },
+    "SR1": {
+        "Name": "Strawberries",
+        "Price": 5.00,
+    },
+    "CF1": {
+        "Name": "Coffee",
+        "Price": 11.23,
+    },
+}
+
+test_trolleys = [
+    ["FR1", "SR1", "FR1", "CF1"],
+    ["FR1", "FR1"],
+    ["SR1", "SR1", "SR1", "FR1"],
+]
