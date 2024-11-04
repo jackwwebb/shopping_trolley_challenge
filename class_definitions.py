@@ -1,25 +1,10 @@
 import math
 
-# add in product dictionary here, so we don't need to call it when we view a trolley
-products = {
-    "FR1": {
-        "Name": "Fruit Tea",
-        "Price": 3.11,
-    },
-    "SR1": {
-        "Name": "Strawberries",
-        "Price": 5.00,
-    },
-    "CF1": {
-        "Name": "Coffee",
-        "Price": 11.23,
-    }
-}
-
 class Trolley():
     # define a trolley class with the four requested functions
-    def __init__(self, contents):
+    def __init__(self, contents, product_catalogue):
         self.contents = contents
+        self.product_catalogue = product_catalogue
 
     def add_product (self, product_label):
         self.contents.append(product_label)
@@ -28,22 +13,20 @@ class Trolley():
         self.contents.remove(product_label)
 
     def view (self):
-        for product in set(self.contents):
-            print (str(self.contents.count(product)) + " x " + products[product]['Name'])
+        for product_label in set(self.contents):
+            print (str(self.contents.count(product_label)) + " x " + self.product_catalogue[product_label]["Product"].name)
 
-    def total_cost(self, product_catalogue):
-        # before running this, we will need to define a "product catalogue"
-        # to link the product dictionary above with the created instances of the Product class
+    def total_cost(self):
         running_cost = 0
-        for p in product_catalogue:
-            running_cost += product_catalogue[p]["Product"].total_product_cost(self.contents.count(p))
+        for p in self.product_catalogue:
+            running_cost += self.product_catalogue[p]["Product"].total_product_cost(self.contents.count(p))
         return (running_cost)
-
 
 class Product():
     # define a product class, with product cost varying according to the offer
-    def __init__ (self, price, offer = None, reduction_amount = None, reduction_min_quantity = None):
+    def __init__ (self, name, price, offer = None, reduction_amount = None, reduction_min_quantity = None):
         self.price = price
+        self.name = name
         if offer in [None, 'BOGOF', 'Reduced']:
             self.offer = offer
         else:
