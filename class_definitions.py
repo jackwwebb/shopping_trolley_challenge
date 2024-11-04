@@ -1,5 +1,6 @@
 import math
 
+# add in product dictionary here, so we don't need to call it when we view a trolley
 products = {
     "FR1": {
         "Name": "Fruit Tea",
@@ -40,7 +41,7 @@ class Trolley():
 
 
 class Product():
-    # define a product class, which product cost varying according to the offer
+    # define a product class, with product cost varying according to the offer
     def __init__ (self, price, offer = None, reduction_amount = None, reduction_min_quantity = None):
         self.price = price
         if offer in [None, 'BOGOF', 'Reduced']:
